@@ -1,4 +1,4 @@
-let app = angular.module('news', ['ui.router']);
+let app = angular.module('news', []);
 
 app.factory('posts', [function(){
 	let o = {
