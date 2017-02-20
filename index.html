@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>My Angular App</title>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js"></script>
+	<script src="app.js"></script>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body ng-app="news" ng-controller="MainCtrl">
+	<h1>{{test}}</h1>
+	<form ng-submit=addPost()>
+		<label>Title</label><input type="text" ng-model="title" placeholder="post title" required>
+		<label>Link</label><input type="url" ng-model="link" ng-init="link='https://'" required>
+		<button type="submit">Add post</button>
+	</form>
+	<div ng-repeat="post in posts | orderBy: '-upvotes'">
+		<a href="{{post.link}}" target="_blank">{{post.title}}</a>
+		<p>{{post.upvotes}}</p>
+		<span ng-click="addUpvote(post)">^</span>
+		<span ng-click="subtractUpvote(post)">v</span>
+	</div>
+</body>
+</html>
